@@ -17,8 +17,7 @@ Frame.Position = UDim2.new(0.5,-160,0.5,-95)
 Frame.BackgroundColor3 = Color3.fromRGB(15,15,15)
 Frame.BorderSizePixel = 0
 
-local UICorner = Instance.new("UICorner", Frame)
-UICorner.CornerRadius = UDim.new(0,12)
+Instance.new("UICorner", Frame).CornerRadius = UDim.new(0,12)
 
 local Title = Instance.new("TextLabel")
 Title.Parent = Frame
@@ -72,11 +71,27 @@ GetKey.MouseButton1Click:Connect(function()
     GetKey.Text = "LINK COPIED"
 end)
 
-Verify.MouseButton1Click:Connect(function()
-    if TextBox.Text == correctKey then
-        ScreenGui:Destroy()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/48-create/MAINGIG-HUB/refs/heads/main/Hub.lua", true))()
-    else
-        TextBox.Text = "WRONG KEY"
+local function checkKey(input)
+    for _, key in pairs(keys) do
+        if input == key then
+            return true
+        end
     end
+    return false
+end
+
+Verify.MouseButton1Click:Connect(function()
+
+    if checkKey(TextBox.Text) then
+        
+        ScreenGui:Destroy()
+
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/48-create/MAINGIG-HUB/refs/heads/main/Hub.lua", true))()
+
+    else
+        
+        TextBox.Text = "WRONG KEY"
+        
+    end
+
 end)
