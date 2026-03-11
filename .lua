@@ -1,4 +1,8 @@
-local correctKey = "GIG-KEY-84X2-PL9Q"
+local keys = {
+    "GIG-KEY-84X2-PL9Q",
+    "GIG-UNIVERSAL-KEY"
+}
+
 local keyLink = "https://link-hub.net/4189353/fTnXV0QqiO95"
 
 local ScreenGui = Instance.new("ScreenGui")
